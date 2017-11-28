@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>hellow onsubmit</title>
+    <script src="js/jquery-3.1.1.js"></script>
+    <script src="js/angular.min.js"></script>
+</head>
+<body>
+<form name="myform" id="form1" action="index.php" method="post">
+    <div ng-app="">
+        <input type="text" ng-model="picasso" name="name" placeholder="name">
+        <p ng-bind="picasso"></p>
+    </div>
+    <br>
+    <input type="password" id="pass" placeholder="password">
+    <br>
+
+    <input type="password" id="conf" placeholder="confirm">
+    <br>
+
+    <input type="submit" name="submt" value="submit">
+    <input type="submit" name="submit" value="submit">
+    <br>
+</form>
+<script>
+    $(document).ready(function () {
+        $('#form1').submit(function () {
+            var par = document.forms['myform']['name'].value;
+            var pass = $('#pass').val();
+            var conf = $('#conf').val();
+            if (pass != conf) {
+                alert('please retype the password');
+                return false;
+            }
+            return true;
+        });
+    });
+    /*
+
+    */
+
+</script>
+</body>
+</html>
+
+ 

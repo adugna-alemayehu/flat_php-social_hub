@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>w3.csss modal</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/w3.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+</head>
+<body class="container">
+<div class="container-fluid jumbotron">
+    <h1>Picasso.Pack trila of modal</h1>
+</div>
+<button type="button" class="w3-btn w3-green w3-larage" onclick="document.getElementById('mod1').style.display='block'">
+    View modal
+</button>
+<div class="w3-modal" id="mod1">
+    <span onclick="document.getElementById('mod1').style.display='none'"
+          class="w3-closebtn w3-hover-red w3-container w3-padding-16 w3-display-topright w3-xxlarge">&times;</span>
+    <div class="w3-modal-content w3-card-8 w3-animate-zoom" style="max-width:600px">
+        <div class="w3-center"><br>
+            <img src="resource/image/img_avatar3.png" alt="employee" class="w3-circle w3-margin-top" style="width:30%">
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<?php
+$email=$connection->escape_string($_POST['l_mail']);
+$result=$connection->query("select *from account where email='$email'");
+if(isset($_COOKIE['email'])){
+     $user=$result->fetch_assoc();
+    $_SESSION['first_name']=$user['first_name'];
+        $_SESSION['last_name']=$user['last_name'];
+        $_SESSION['email']=$user['email'];
+        $_SESSION['active']=$user['active'];
+        $_SESSION['logged_in']=true;
+        header('location:profile.php');
+}
+else{
+if($result->num_rows==0){
+    $_SESSION['message']="user with the email u entered doesn't exist";
+    header('location:error');
+}
+else{
+    $user=$result->fetch_assoc();
+   // print_r($user);
+    if(password_verify($_POST['l_password'],$user['password'])){
+        setcookie('email',$email,time()+(60*60*24*7));
+        setcookie('password',$_POST['l_password'],time()+(60*60*24*7));
+        $_SESSION['first_name']=$user['first_name'];
+        $_SESSION['last_name']=$user['last_name'];
+        $_SESSION['email']=$user['email'];
+        $_SESSION['active']=$user['active'];
+        $_SESSION['logged_in']=true;
+        header('location:profile.php');
+    }
+    else{
+        $_SESSION['message']="the password that you entered is inccorect";
+        header('location:error.php');
+    }
+}
+}
+?>
+
+
